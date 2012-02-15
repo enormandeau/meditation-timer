@@ -1,0 +1,10 @@
+NEW IN VERSION 0.2
+
+- Added install script
+- Documented new install procedure in README file
+
+
+NEW IN VERSION 0.1
+
+- Added data folder that contains the sound file and ascii art files
+- Tightened up the README file
