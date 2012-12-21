@@ -39,6 +39,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import sys
 import getopt
 import os
+import subprocess
 from os.path import join, dirname
 from time import time, sleep
 try:
@@ -69,10 +70,7 @@ def wait(duration):
 def _play_chime():
     """Play a sound file once
     """
-    pygame.init()
-    pygame.mixer.music.load(join(DATA_PATH, "bowl.ogg"))
-    pygame.mixer.music.play()
-    sleep(10)
+    subprocess.call(["mplayer data/bowl-short.ogg -really-quiet 2> /dev/null"], shell=True)
 
 def print_text_file(ascii_file):
     """Print the content of a text file, for example ascii art
@@ -102,7 +100,9 @@ the meditation period, both given in minutes
 def main():
     try:
         opts, args = getopt.getopt(sys.argv[1:], "h", ["help"])
-        if opts[0][0].lower() in ["-h", "-help", "--help"]:
+        print opts
+        print args
+        if args[0][0].lower() in ["-h", "-help", "--help"]:
             print __doc__
             sys.exit(0)
     except getopt.error, msg:
