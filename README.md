@@ -5,21 +5,18 @@ that works under Linux. It provides a meditation timer that plays three chimes
 at the start of the meditation session and one at the end. The user can define
 both the duration of the session as well as of the duration of theset up period.
 
-
 ###DEPENDENCIES
 
-Meditation timer requires the 'pygame' Python module to play the chime sound.
-You should install 'pygame' before attemptint to install Meditation-timer. In
-Debian, Ubuntu or Linux Mint, type:
-
-```bash
-sudo apt-get install python-pygame
-```
+Meditation timer requires the mplayer program and currently (v0.3.0) works only
+under Linux (tested) and possibly MacOSX (not tested). It is planned to make it
+work under Windows in the next version (v0.4.0).
 
 ###INSTALLING
 
-Meditation-timer is written to work under Linux. You have two options in order
-to use Meditation-timer:
+Meditation-timer is written to work under Linux. When Windows support will be
+added, the only option will be to run it without installation, the first option
+listed in the next option. In linux, you have two options in order to use
+Meditation-timer:
 
 ####1) No installation. Simply put the program directory anywhere on your
 system. When you want to lauch the program, open a terminal and move into the
@@ -76,5 +73,5 @@ meditation 20 1
 
 You can send comments to the author at:
 
-eric dot normandeau dot qc at gmail dot com
+eric [dot] normandeau [dot] qc at gmail [dot] com
 
