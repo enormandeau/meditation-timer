@@ -37,7 +37,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # Importing modules
 import sys
-import getopt
+import argparse
 import os
 import subprocess
 from os.path import join, dirname
@@ -81,7 +81,7 @@ def print_text_file(ascii_file):
         print line,
     print
 
-def timer(period=30, delay=1.3):
+def timer(period, delay):
     """Meditation timer. Sound a bell after an initial delay and at the end of
 the meditation period, both given in minutes
     """
@@ -98,17 +98,12 @@ the meditation period, both given in minutes
     print_text_file(join(DATA_PATH, "buddha3.txt"))
 
 def main():
-    try:
-        opts, args = getopt.getopt(sys.argv[1:], "h", ["help"])
-        print opts
-        print args
-        if args[0][0].lower() in ["-h", "-help", "--help"]:
-            print __doc__
-            sys.exit(0)
-    except getopt.error, msg:
-        print __doc__
-        sys.exit(1)
-    timer(*args)
+    parser = argparse.ArgumentParser(description='Meditation timer. Sound a bell after an initial delay and at the end of the meditation period')
+    parser.add_argument('-p', '--period', type=float, nargs='?', default=30, help='meditation period in minutes, default is 30')
+    parser.add_argument('-d', '--delay',  type=float, nargs='?', default=1.3, help='initial delay in minutes, default is 1.3')
+
+    args = parser.parse_args()
+    timer(args.period, args.delay)
 
 if __name__ == "__main__":
     main()
