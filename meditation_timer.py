@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
 # Metitation timer
-# Version 0.2
-# 2011-12-15
+# Version 0.3
+# 2013-07-17
 
 # Statue sits, quiet
 # unending meditation
@@ -11,9 +11,6 @@
 """
 Metitation timer
 A tool to assist in the practice of mindfullness
-
-Usage:
-    meditation_timer.py [period] [delay]
 
 The meditation period duration and the initial delay, in minutes, are optional.
 If ommited, they default to a meditation period of 30 minutes and a preparation
@@ -36,16 +33,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 # Importing modules
-import sys
-import argparse
-import os
-import subprocess
 from os.path import join, dirname
 from time import time, sleep
+import subprocess
+import argparse
+import sys
+import os
 try:
     import pygame
 except:
-    print "Python module 'pygame' is required, please install it"
+    print "Python module 'pygame' is required but could not be loaded"
     sys.exit(1)
 
 # Defining global variables
@@ -98,9 +95,13 @@ the meditation period, both given in minutes
     print_text_file(join(DATA_PATH, "buddha3.txt"))
 
 def main():
-    parser = argparse.ArgumentParser(description='Meditation timer. Sound a bell after an initial delay and at the end of the meditation period')
-    parser.add_argument('-p', '--period', type=float, nargs='?', default=30, help='meditation period in minutes, default is 30')
-    parser.add_argument('-d', '--delay',  type=float, nargs='?', default=1.3, help='initial delay in minutes, default is 1.3')
+    parser = argparse.ArgumentParser(description=
+            'Meditation timer. Sound a bell after an initial delay and 
+            at the end of the meditation period')
+    parser.add_argument('-p', '--period', type=float, nargs='?', default=30,
+            help= 'meditation period in minutes, default is 30')
+    parser.add_argument('-d', '--delay',  type=float, nargs='?', default=1.3,
+            help='initial delay in minutes, default is 1.3')
 
     args = parser.parse_args()
     timer(args.period, args.delay)
