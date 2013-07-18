@@ -1,3 +1,7 @@
+NEW IN VERSION 0.3
+
+- Argument parsing now uses argparse (thanks to eug48)
+
 NEW IN VERSION 0.2
 
 - Added install script
