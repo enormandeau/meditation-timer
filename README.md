@@ -30,10 +30,10 @@ the console, type:
 Launch the program:
 
 ```bash
-./meditation_timer [period] [delay] 
+./meditation_timer.py
 ```
 
-####2) Installing meditation-timer is made via the 'install.sh' script. This will
+####2) Installing meditation-timer is made via the 'install.sh' script.This will
 install the Python program file ('meditation_timer.py') in the '/usr/local/bin'
 directory and the 'data' folder in '/usr/share/meditation-timer/' directory. In
 order to install the program, you will need to have admnistrative rights on your
@@ -55,14 +55,20 @@ The program is now installed.
 
 ###USING THE PROGRAM
 
-- For a meditation period of 20 minutes, preceded by one minute to set up, open
-  a terminal and lauch the following command:
+- Launch the program without options for quick help and information about
+  available options, a terminal and lauch the following command:
 
 ```bash
-meditation 20 1
+meditation_timer.py
 ```
 
 (Note: add './' before the command if the program was not installed)
+
+- Launch the following command for the full help:
+
+```bash
+meditation_timer.py -h
+```
 
 - Both the period and set up delay are in minutes and also optional. The default
   meditation period is 30 minutes and the default set up delay is 1.3 minutes,
