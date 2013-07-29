@@ -15,6 +15,7 @@ A tool to assist in the practice of mindfullness
 The meditation period duration and the initial delay, in minutes, are optional.
 If ommited, they default to a meditation period of 30 minutes and a preparation
 delay of 1.3 minutes, or 78 seconds.
+
 """
 
 LICENCE = """
@@ -78,7 +79,7 @@ def print_text_file(ascii_file):
         print line,
     print
 
-def timer(period, delay):
+def timer(period, delay, start_bells, end_bells):
     """Meditation timer. Sound a bell after an initial delay and at the end of
 the meditation period, both given in minutes
     """
@@ -87,11 +88,13 @@ the meditation period, both given in minutes
     print_text_file(join(DATA_PATH, "buddha1.txt"))
     wait(delay)
     print_text_file(join(DATA_PATH, "buddha2.txt"))
-    for i in range(3):
+    for i in range(start_bells):
         _play_chime()
     print_text_file(join(DATA_PATH, "buddha.txt"))
+    # TODO implement optional bells during meditation
     wait(period)
-    _play_chime()
+    for i in range(end_bells):
+        _play_chime()
     print_text_file(join(DATA_PATH, "buddha3.txt"))
 
 def main():
@@ -102,9 +105,13 @@ def main():
             help= 'meditation period in minutes, default is 30')
     parser.add_argument('-d', '--delay',  type=float, nargs='?', default=1.3,
             help='initial delay in minutes, default is 1.3')
+    parser.add_argument('-s', '--start-bells', type=int, default=3,
+            help='number of times bell chimes at meditation start')
+    parser.add_argument('-e', '--end-bells', type=int, default=1,
+            help='number of times bell chimes at meditation end')
 
     args = parser.parse_args()
-    timer(args.period, args.delay)
+    timer(args.period, args.delay, args.start_bells, args.end_bells)
 
 if __name__ == "__main__":
     main()
