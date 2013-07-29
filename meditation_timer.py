@@ -40,11 +40,6 @@ import subprocess
 import argparse
 import sys
 import os
-try:
-    import pygame
-except:
-    print "Python module 'pygame' is required but could not be loaded"
-    sys.exit(1)
 
 # Defining global variables
 if dirname(__file__) == "/usr/local/bin":
