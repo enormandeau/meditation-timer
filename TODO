@@ -1,4 +1,2 @@
 - show the user how long they're planning to meditate for, in case they've made a mistake
-- ability to customise number of chimes
 - optional interval chimes (e.g. every 5 minutes)
-- configuration of defaults via an rc file in the home directory
