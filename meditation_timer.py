@@ -86,7 +86,7 @@ the meditation period, both given in minutes
     for i in range(start_bells):
         _play_chime()
     print_text_file(join(DATA_PATH, "buddha.txt"))
-    # TODO implement optional bells during meditation
+    # TODO implement optional interval bells during meditation
     wait(period)
     for i in range(end_bells):
         _play_chime()
@@ -101,9 +101,13 @@ at the end of the meditation period""")
     parser.add_argument('-d', '--delay',  type=float, nargs='?', default=1.3,
             help='initial delay in minutes, default is 1.3')
     parser.add_argument('-s', '--start-bells', type=int, default=3,
-            help='number of times bell chimes at meditation start')
+            help='number of times bell chimes at meditation start, default is 3')
     parser.add_argument('-e', '--end-bells', type=int, default=1,
-            help='number of times bell chimes at meditation end')
+            help='number of times bell chimes at meditation end, default is 1')
+    parser.add_argument('-i', '--interval', type=float, default=None,
+            help='interval in minutes at which to play bells during the meditation')
+    parser.add_argument('-I', '--interval-bells', type=int, default=1,
+            help='number of bells to play at intervals, default is 1')
 
     args = parser.parse_args()
     timer(args.period, args.delay, args.start_bells, args.end_bells)
