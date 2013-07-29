@@ -55,20 +55,14 @@ The program is now installed.
 
 ###USING THE PROGRAM
 
-- Launch the program without options for quick help and information about
-  available options, a terminal and lauch the following command:
-
-```bash
-meditation_timer.py
-```
-
-(Note: add './' before the command if the program was not installed)
-
-- Launch the following command for the full help:
+- Launch the program with the -h option for quick help and information about
+  available options. Open a terminal and lauch the following command:
 
 ```bash
 meditation_timer.py -h
 ```
+
+(Note: add './' before the command if the program was not installed)
 
 - Both the period and set up delay are in minutes and also optional. The default
   meditation period is 30 minutes and the default set up delay is 1.3 minutes,

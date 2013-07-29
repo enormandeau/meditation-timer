@@ -99,8 +99,8 @@ the meditation period, both given in minutes
 
 def main():
     parser = argparse.ArgumentParser(description=
-            'Meditation timer. Sound a bell after an initial delay and 
-            at the end of the meditation period')
+            """Meditation timer. Sound a bell after an initial delay and 
+at the end of the meditation period""")
     parser.add_argument('-p', '--period', type=float, nargs='?', default=30,
             help= 'meditation period in minutes, default is 30')
     parser.add_argument('-d', '--delay',  type=float, nargs='?', default=1.3,
