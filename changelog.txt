@@ -1,6 +1,7 @@
 NEW IN VERSION 0.3
 
 - Added possibility of having bells play at interval during meditation
+- Added licence and version options
 - Improved README.md file to reflect use of argparse
 - Added options to change number of bells at start and end of meditation
 - Argument parsing now uses argparse (thanks to eug48)
