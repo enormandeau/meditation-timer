@@ -7,6 +7,12 @@ of the session, the duration of the set up period, the number of bells to be
 heard at the start and end of the meditation and if there should be periodic
 bells during the meditation.
 
+### Features
+
+ - Set preparation and meditation periods duration
+ - Choose how many bells you want before and after meditating
+ - Decide if you want bells, and how many, at intervals during meditation 
+
 ###DEPENDENCIES
 
 Meditation timer requires the mplayer program and currently (v0.3.0) works only
