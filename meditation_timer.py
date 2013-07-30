@@ -75,9 +75,7 @@ def timer(period, delay, start_bells, end_bells,
         num_intervals = int(period / interval_time)
         remainder = period - num_intervals * interval_time
         for i in xrange(num_intervals):
-            t1 = time()
             wait(interval_time - bell_duration)
-            print time() - t1
             play_chimes(interval_bells)
         wait(remainder - bell_duration)
         play_chimes(end_bells)
