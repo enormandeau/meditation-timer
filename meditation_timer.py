@@ -63,6 +63,7 @@ def timer(period, delay, start_bells, end_bells,
     """Meditation timer. Sound a bell after an initial delay and at the end of
     the meditation period, both given in minutes
     """
+    bell_duration = 7./60
     print_file(join(DATA_PATH, "buddha0.txt"))
     wait(5./60) # wait 5 seconds with initial message
     print_file(join(DATA_PATH, "buddha1.txt"))
@@ -74,7 +75,9 @@ def timer(period, delay, start_bells, end_bells,
         num_intervals = int(period / interval_time)
         remainder = period - num_intervals * interval_time
         for i in xrange(num_intervals):
+            t1 = time()
             wait(interval_time - bell_duration)
+            print time() - t1
             play_chimes(interval_bells)
         wait(remainder - bell_duration)
         play_chimes(end_bells)
