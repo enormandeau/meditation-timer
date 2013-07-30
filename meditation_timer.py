@@ -109,9 +109,6 @@ at the end of the meditation period""")
     if args.version:
         print __VERSION__
         sys.exit(0)
-    elif args.licence:
-        print __LICENCE__
-        sys.exit(0)
 
     # Launch the program
     timer(args.period,
