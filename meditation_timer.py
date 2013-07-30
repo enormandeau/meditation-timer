@@ -1,36 +1,26 @@
 #!/usr/bin/env python
+"""Meditation timer
+A tool to assist in the practice of mindfulness
 
-# Metitation timer
-# Version 0.3
-# 2013-07-17
-
-# Statue sits, quiet
-# unending meditation
-# expression of bliss
-
+    Statue sits, quiet
+    unending meditation
+    expression of bliss
 """
-Metitation timer
-A tool to assist in the practice of mindfullness
+__VERSION__ = "0.3.1"
 
-The meditation period duration and the initial delay, in minutes, are optional.
-If ommited, they default to a meditation period of 30 minutes and a preparation
-delay of 1.3 minutes, or 78 seconds.
+# TODO change licence?
+__LICENCE__ = """
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version.
 
-"""
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
-LICENCE = """
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
+You should have received a copy of the GNU General Public License along with
+this program. If not, see <http://www.gnu.org/licences/>.
 """
 
 # Importing modules
@@ -65,7 +55,7 @@ def _play_chime():
     """
     subprocess.call(["mplayer data/bowl-short.ogg -really-quiet 2> /dev/null"], shell=True)
 
-def print_text_file(ascii_file):
+def print_file(ascii_file):
     """Print the content of a text file, for example ascii art
     """
     ascii_data = open(ascii_file)
@@ -74,44 +64,67 @@ def print_text_file(ascii_file):
         print line,
     print
 
-def timer(period, delay, start_bells, end_bells):
+def timer(period, delay, start_bells, end_bells,
+        interval, interval_time, interval_bells):
     """Meditation timer. Sound a bell after an initial delay and at the end of
-the meditation period, both given in minutes
+    the meditation period, both given in minutes
     """
-    print_text_file(join(DATA_PATH, "buddha0.txt"))
-    wait(3./60)
-    print_text_file(join(DATA_PATH, "buddha1.txt"))
-    wait(delay)
-    print_text_file(join(DATA_PATH, "buddha2.txt"))
+    print_file(join(DATA_PATH, "buddha0.txt"))
+    if interval:
+        print "Interval bells:", interval
+    else:
+        print "No interval bells"
+    wait(3./60) # wait 3 seconds with initial message
+    print_file(join(DATA_PATH, "buddha1.txt"))
+    wait(delay) # TODO intervals here
+    print_file(join(DATA_PATH, "buddha2.txt"))
     for i in range(start_bells):
         _play_chime()
-    print_text_file(join(DATA_PATH, "buddha.txt"))
-    # TODO implement optional interval bells during meditation
+    print_file(join(DATA_PATH, "buddha.txt"))
     wait(period)
     for i in range(end_bells):
         _play_chime()
-    print_text_file(join(DATA_PATH, "buddha3.txt"))
+    print_file(join(DATA_PATH, "buddha3.txt"))
 
-def main():
+# Main loop
+if __name__ == "__main__":
+    # Create option parser
     parser = argparse.ArgumentParser(description=
             """Meditation timer. Sound a bell after an initial delay and 
 at the end of the meditation period""")
     parser.add_argument('-p', '--period', type=float, nargs='?', default=30,
-            help= 'meditation period in minutes, default is 30')
+        help= 'meditation period in minutes, default is 30')
     parser.add_argument('-d', '--delay',  type=float, nargs='?', default=1.3,
-            help='initial delay in minutes, default is 1.3')
+        help='initial delay in minutes, default is 1.3')
     parser.add_argument('-s', '--start-bells', type=int, default=3,
-            help='number of times bell chimes at meditation start, default is 3')
+        help='number of times bell chimes at meditation start, default is 3')
     parser.add_argument('-e', '--end-bells', type=int, default=1,
-            help='number of times bell chimes at meditation end, default is 1')
-    parser.add_argument('-i', '--interval', type=float, default=None,
-            help='interval in minutes at which to play bells during the meditation')
-    parser.add_argument('-I', '--interval-bells', type=int, default=1,
-            help='number of bells to play at intervals, default is 1')
-
+        help='number of times bell chimes at meditation end, default is 1')
+    parser.add_argument('-i', '--interval', action="store_true",
+        help='whether bells should be played during the meditation')
+    parser.add_argument('-I', '--interval-time', type=float, default=5,
+        help='interval in minutes at which to play bells during the meditation')
+    parser.add_argument('-b', '--interval-bells', type=int, default=1,
+        help='number of bells to play at intervals, default is 1')
+    parser.add_argument('-v', '--version', action="store_true",
+        help='show version number and quit')
+    parser.add_argument('-l', '--licence', action="store_true",
+        help='show licence and quit')
     args = parser.parse_args()
-    timer(args.period, args.delay, args.start_bells, args.end_bells)
 
-if __name__ == "__main__":
-    main()
+    # Show version or licence
+    if args.version:
+        print __VERSION__
+        sys.exit(0)
+    elif args.licence:
+        print __LICENCE__
+        sys.exit(0)
 
+    # Launch the program
+    timer(args.period,
+            args.delay,
+            args.start_bells,
+            args.end_bells,
+            args.interval,
+            args.interval_time,
+            args.interval_bells)
