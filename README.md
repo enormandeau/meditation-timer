@@ -1,13 +1,13 @@
 ###ABOUT THIS PROGRAM
 
-Meditation timer is a simple program to assist in the practice of mindfulness
-that works under Linux. It provides a meditation timer that plays chimes at the
-start and the end of the meditation session. The user can define the duration
-of the session, the duration of the set up period, the number of bells to be
-heard at the start and end of the meditation and if there should be periodic
-bells during the meditation.
+Meditation timer (v0.3.1) is a simple program to assist in the practice of
+mindfulness that works under Linux. It provides a meditation timer that plays
+chimes at the start and the end of the meditation session. The user can define
+the duration of the session, the duration of the set up period, the number of
+bells to be heard at the start and end of the meditation and if there should be
+periodic bells during the meditation.
 
-### Features
+###FEATURES
 
  - Set preparation and meditation periods duration
  - Choose how many bells you want before and after meditating
@@ -15,8 +15,8 @@ bells during the meditation.
 
 ###DEPENDENCIES
 
-Meditation timer requires the mplayer program and currently (v0.3.0) works only
-under Linux (tested) and possibly MacOSX (not tested).
+Meditation timer requires the mplayer program and currently works only under
+Linux (tested) and possibly MacOSX (not tested).
 
 ###INSTALLING
 
