@@ -8,21 +8,6 @@ A tool to assist in the practice of mindfulness
 """
 __VERSION__ = "0.3.1"
 
-# TODO change licence?
-__LICENCE__ = """
-This program is free software: you can redistribute it and/or modify it under
-the terms of the GNU General Public License as published by the Free Software
-Foundation, either version 3 of the License, or (at your option) any later
-version.
-
-This program is distributed in the hope that it will be useful, but WITHOUT ANY
-WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
-PARTICULAR PURPOSE.  See the GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License along with
-this program. If not, see <http://www.gnu.org/licences/>.
-"""
-
 # Importing modules
 from os.path import join, dirname
 from time import time, sleep
@@ -38,7 +23,7 @@ elif dirname(__file__) == ".":
     DATA_PATH = "./data"
 else:
     print "Cannot launch Meditation-timer."
-    print "Read the installation procedure in the README file."
+    print "Read the installation procedure in the README.md file."
 
 # Defining functions
 def wait(duration):
@@ -50,10 +35,17 @@ def wait(duration):
         sleep(1)
         time_diff = time_end - time()
 
-def _play_chime():
-    """Play a sound file once
+def play_chime():
+    """Play a chime once
     """
-    subprocess.call(["mplayer data/bowl-short.ogg -really-quiet 2> /dev/null"], shell=True)
+    subprocess.call(["mplayer data/bowl-short.ogg -really-quiet 2> /dev/null"],
+        shell=True)
+
+def play_chimes(n):
+    """Play a chime n times
+    """
+    for i in xrange(n):
+        play_chime()
 
 def print_file(ascii_file):
     """Print the content of a text file, for example ascii art
@@ -61,7 +53,7 @@ def print_file(ascii_file):
     ascii_data = open(ascii_file)
     print "\n" * 69
     for line in ascii_data:
-        print line,
+        print line.rstrip()
     print
 
 def timer(period, delay, start_bells, end_bells,
@@ -70,25 +62,28 @@ def timer(period, delay, start_bells, end_bells,
     the meditation period, both given in minutes
     """
     print_file(join(DATA_PATH, "buddha0.txt"))
-    if interval:
-        print "Interval bells:", interval
-    else:
-        print "No interval bells"
     wait(3./60) # wait 3 seconds with initial message
     print_file(join(DATA_PATH, "buddha1.txt"))
-    wait(delay) # TODO intervals here
+    wait(delay)
     print_file(join(DATA_PATH, "buddha2.txt"))
-    for i in range(start_bells):
-        _play_chime()
+    play_chimes(start_bells)
     print_file(join(DATA_PATH, "buddha.txt"))
-    wait(period)
-    for i in range(end_bells):
-        _play_chime()
+    if interval:
+        num_intervals = int(period / interval_time)
+        remainder = period - num_intervals * interval_time
+        for i in xrange(num_intervals):
+            wait(interval_time)
+            play_chimes(interval_bells)
+        wait(remainder)
+        play_chimes(end_bells)
+    else:
+        wait(period)
+        play_chimes(end_bells)
     print_file(join(DATA_PATH, "buddha3.txt"))
 
 # Main loop
 if __name__ == "__main__":
-    # Create option parser
+    # Option parser
     parser = argparse.ArgumentParser(description=
             """Meditation timer. Sound a bell after an initial delay and 
 at the end of the meditation period""")
@@ -98,8 +93,8 @@ at the end of the meditation period""")
         help='initial delay in minutes, default is 1.3')
     parser.add_argument('-s', '--start-bells', type=int, default=3,
         help='number of times bell chimes at meditation start, default is 3')
-    parser.add_argument('-e', '--end-bells', type=int, default=1,
-        help='number of times bell chimes at meditation end, default is 1')
+    parser.add_argument('-e', '--end-bells', type=int, default=3,
+        help='number of times bell chimes at meditation end, default is 3')
     parser.add_argument('-i', '--interval', action="store_true",
         help='whether bells should be played during the meditation')
     parser.add_argument('-I', '--interval-time', type=float, default=5,
@@ -108,8 +103,6 @@ at the end of the meditation period""")
         help='number of bells to play at intervals, default is 1')
     parser.add_argument('-v', '--version', action="store_true",
         help='show version number and quit')
-    parser.add_argument('-l', '--licence', action="store_true",
-        help='show licence and quit')
     args = parser.parse_args()
 
     # Show version or licence
@@ -122,9 +115,10 @@ at the end of the meditation period""")
 
     # Launch the program
     timer(args.period,
-            args.delay,
-            args.start_bells,
-            args.end_bells,
-            args.interval,
-            args.interval_time,
-            args.interval_bells)
+        args.delay,
+        args.start_bells,
+        args.end_bells,
+        args.interval,
+        args.interval_time,
+        args.interval_bells)
+
