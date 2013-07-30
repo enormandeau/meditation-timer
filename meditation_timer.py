@@ -29,6 +29,8 @@ else:
 def wait(duration):
     """Wait a certain number of minutes
     """
+    if duration <= 0:
+        duration = 0
     time_end = time() + float(duration) * 60
     time_diff = time_end - time()
     while time_diff > 0:
@@ -62,7 +64,7 @@ def timer(period, delay, start_bells, end_bells,
     the meditation period, both given in minutes
     """
     print_file(join(DATA_PATH, "buddha0.txt"))
-    wait(3./60) # wait 3 seconds with initial message
+    wait(5./60) # wait 5 seconds with initial message
     print_file(join(DATA_PATH, "buddha1.txt"))
     wait(delay)
     print_file(join(DATA_PATH, "buddha2.txt"))
@@ -72,12 +74,12 @@ def timer(period, delay, start_bells, end_bells,
         num_intervals = int(period / interval_time)
         remainder = period - num_intervals * interval_time
         for i in xrange(num_intervals):
-            wait(interval_time)
+            wait(interval_time - bell_duration)
             play_chimes(interval_bells)
-        wait(remainder)
+        wait(remainder - bell_duration)
         play_chimes(end_bells)
     else:
-        wait(period)
+        wait(period - bell_duration)
         play_chimes(end_bells)
     print_file(join(DATA_PATH, "buddha3.txt"))
 
@@ -104,6 +106,20 @@ at the end of the meditation period""")
     parser.add_argument('-v', '--version', action="store_true",
         help='show version number and quit')
     args = parser.parse_args()
+
+    # Insure that option values OK
+    assert args.period > 0, \
+            "Meditation period (-p) must be positive"
+    assert args.delay > 0, \
+            "Meditation delay (-d) must be positive"
+    assert args.start_bells >= 0, \
+            "Number of start bells (-s) must be null or positive"
+    assert args.end_bells >= 0, \
+            "Number of end bells (-e) must be null or positive"
+    assert args.interval_bells >= 0, \
+            "Number of interval bells (-b) must be null or positive"
+    assert args.interval_time > 0, \
+            "Interval duration (-I) must be positive"
 
     # Show version or licence
     if args.version:
