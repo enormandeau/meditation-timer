@@ -1,2 +1,4 @@
-- show the user how long they're planning to meditate for, in case they've made a mistake
-- optional interval chimes (e.g. every 5 minutes)
+- Display remaining/total time
+- Display progress bar
+- Display breathing aid
+
