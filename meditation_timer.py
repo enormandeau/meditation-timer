@@ -111,8 +111,8 @@ at the end of the meditation period""")
     # Insure that option values OK
     assert args.period > 0, \
             "Meditation period (-p) must be positive"
-    assert args.delay > 0, \
-            "Meditation delay (-d) must be positive"
+    assert args.delay >= 0, \
+            "Meditation delay (-d) must be zero or positive"
     assert args.start_bells >= 0, \
             "Number of start bells (-s) must be null or positive"
     assert args.end_bells >= 0, \
