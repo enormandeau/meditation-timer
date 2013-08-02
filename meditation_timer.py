@@ -18,7 +18,7 @@ import os
 
 # Defining global variables
 if dirname(__file__) == "/usr/local/bin":
-    DATA_PATH = "/usr/share/meditation_timer/data"
+    DATA_PATH = "/usr/share/meditation-timer/data"
 elif dirname(__file__) == ".":
     DATA_PATH = "./data"
 else:
