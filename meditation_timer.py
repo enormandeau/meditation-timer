@@ -40,7 +40,7 @@ def wait(duration):
 def play_chime():
     """Play a chime once
     """
-    subprocess.call(["mplayer data/bowl-short.ogg -really-quiet 2> /dev/null"],
+    subprocess.call(["mplayer " + DATA_PATH + "/bowl-short.ogg -really-quiet 2> /dev/null"],
         shell=True)
 
 def play_chimes(n):
@@ -65,7 +65,7 @@ def timer(period, delay, start_bells, end_bells,
     """
     bell_duration = 7./60
     print_file(join(DATA_PATH, "buddha0.txt"))
-    wait(5./60) # wait 5 seconds with initial message
+    wait(3./60) # wait 3 seconds with initial message
     print_file(join(DATA_PATH, "buddha1.txt"))
     wait(delay)
     print_file(join(DATA_PATH, "buddha2.txt"))
