@@ -2,11 +2,14 @@
 """Meditation timer
 A tool to assist in the practice of mindfulness
 
+use the -h option for full help and options
+(eg: meditation_timer.py -h)
+
     Statue sits, quiet
     unending meditation
     expression of bliss
 """
-__VERSION__ = "0.3.2"
+__VERSION__ = "0.3.3"
 
 # Importing modules
 from os.path import join, dirname
@@ -41,22 +44,21 @@ def wait(duration, debug_time):
         delta = time() - t0
         print " Waited:", pretty_time(delta)
 
-def play_chime():
+def play_chime(volume):
     """Play a chime once
     """
-    subprocess.call(["mplayer " +
-        DATA_PATH +
-        "/bowl-short.ogg -really-quiet 2> "
-        + "~/Desktop/" +
-        "error.log"],
-        shell=True)
+    print "Volume:", volume
+    mplayer_call = "mplayer -volume {} ".format(volume) + \
+        DATA_PATH + \
+        "/bowl-short.ogg -really-quiet 2> ~/Desktop/error.log"
+    subprocess.call([mplayer_call], shell=True)
 
-def play_chimes(n, debug_time):
+def play_chimes(n, debug_time, volume):
     """Play a chime n times
     """
     for i in xrange(n):
         t0 = time()
-        play_chime()
+        play_chime(volume)
         if debug_time:
             delta = time() - t0
             print "  Chime " + str(i + 1) + ":", pretty_time(delta)
@@ -81,31 +83,31 @@ def print_file(ascii_file, debug_time):
 
 def timer(period, delay, start_bells, end_bells,
         interval, interval_time, interval_bells,
-        quiet, debug_time):
+        quiet, debug_time, no_print, volume):
     """Meditation timer
     """
     t0 = time()
     bell_duration = 8.45/60
 
     # Preparation
-    if not args.no_print:
+    if not no_print:
         print_file(join(DATA_PATH, "buddha0.txt"), debug_time)
     wait(3./60, debug_time) # wait 3 seconds with initial message
-    if not args.no_print:
+    if not no_print:
         print_file(join(DATA_PATH, "buddha1.txt"), debug_time)
     wait(delay, debug_time)
-    if not args.no_print:
+    if not no_print:
         print_file(join(DATA_PATH, "buddha2.txt"), debug_time)
     if quiet:
         wait(bell_duration, debug_time)
     else:
-        play_chimes(start_bells, debug_time)
+        play_chimes(start_bells, debug_time, volume)
     if debug_time:
         delta = time() - t0
         print "--Preparation:", pretty_time(delta)
 
     # Meditation
-    if not args.no_print:
+    if not no_print:
         print_file(join(DATA_PATH, "buddha.txt"), debug_time)
     t1 = time()
     if interval:
@@ -116,23 +118,23 @@ def timer(period, delay, start_bells, end_bells,
             if quiet:
                 wait(bell_duration, debug_time)
             else:
-                play_chimes(interval_bells, debug_time)
+                play_chimes(interval_bells, debug_time, volume)
         wait(remainder - bell_duration, debug_time)
         meditation_time = time() - t1
         if quiet:
             wait(bell_duration, debug_time)
         else:
-            play_chimes(end_bells, debug_time)
+            play_chimes(end_bells, debug_time, volume)
     else:
         wait(period - bell_duration, debug_time)
         meditation_time = time() - t1
         if quiet:
             wait(bell_duration, debug_time)
         else:
-            play_chimes(end_bells, debug_time)
+            play_chimes(end_bells, debug_time, volume)
 
     # End of meditation
-    if not args.no_print:
+    if not no_print:
         print_file(join(DATA_PATH, "buddha3.txt"), debug_time)
     tf = time()
     program_time = time() - t0
@@ -160,8 +162,10 @@ at the end of the meditation period""")
         help='interval in minutes at which to play bells during the meditation')
     parser.add_argument('-b', '--interval-bells', type=int, default=1,
         help='number of bells to play at intervals, default is 1')
-    parser.add_argument('-v', '--version', action="store_true",
+    parser.add_argument('-V', '--version', action="store_true",
         help='show version number and quit')
+    parser.add_argument('-v', '--volume', type=int, default=70,
+        help='chime sound volume, from 0 to 100, default is 70')
     parser.add_argument('-q', '--quiet', action="store_true",
         help='run program without sound')
     parser.add_argument('-n', '--no-print', action="store_true",
@@ -190,7 +194,8 @@ at the end of the meditation period""")
         sys.exit(0)
 
     # Launch the program
-    timer(args.period,
+    timer(
+        args.period,
         args.delay,
         args.start_bells,
         args.end_bells,
@@ -198,5 +203,8 @@ at the end of the meditation period""")
         args.interval_time,
         args.interval_bells,
         args.quiet,
-        args.debug_time)
+        args.debug_time,
+        args.no_print,
+        args.volume
+        )
 
