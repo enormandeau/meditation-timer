@@ -50,7 +50,7 @@ def play_chime(volume):
     print "Volume:", volume
     mplayer_call = "mplayer -volume {} ".format(volume) + \
         DATA_PATH + \
-        "/bowl-short.ogg -really-quiet 2> ~/Desktop/error.log"
+        "/bowl-short.ogg -really-quiet 2> /dev/null"
     subprocess.call([mplayer_call], shell=True)
 
 def play_chimes(n, debug_time, volume):
