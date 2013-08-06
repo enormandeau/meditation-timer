@@ -44,7 +44,11 @@ def wait(duration, debug_time):
 def play_chime():
     """Play a chime once
     """
-    subprocess.call(["mplayer " + DATA_PATH + "/bowl-short.ogg -really-quiet 2> /dev/null"],
+    subprocess.call(["mplayer " +
+        DATA_PATH +
+        "/bowl-short.ogg -really-quiet 2> "
+        + "~/Desktop/" +
+        "error.log"],
         shell=True)
 
 def play_chimes(n, debug_time):
@@ -84,11 +88,14 @@ def timer(period, delay, start_bells, end_bells,
     bell_duration = 8.45/60
 
     # Preparation
-    print_file(join(DATA_PATH, "buddha0.txt"), debug_time)
+    if not args.no_print:
+        print_file(join(DATA_PATH, "buddha0.txt"), debug_time)
     wait(3./60, debug_time) # wait 3 seconds with initial message
-    print_file(join(DATA_PATH, "buddha1.txt"), debug_time)
+    if not args.no_print:
+        print_file(join(DATA_PATH, "buddha1.txt"), debug_time)
     wait(delay, debug_time)
-    print_file(join(DATA_PATH, "buddha2.txt"), debug_time)
+    if not args.no_print:
+        print_file(join(DATA_PATH, "buddha2.txt"), debug_time)
     if quiet:
         wait(bell_duration, debug_time)
     else:
@@ -98,7 +105,8 @@ def timer(period, delay, start_bells, end_bells,
         print "--Preparation:", pretty_time(delta)
 
     # Meditation
-    print_file(join(DATA_PATH, "buddha.txt"), debug_time)
+    if not args.no_print:
+        print_file(join(DATA_PATH, "buddha.txt"), debug_time)
     t1 = time()
     if interval:
         num_intervals = int(period / interval_time)
@@ -124,7 +132,8 @@ def timer(period, delay, start_bells, end_bells,
             play_chimes(end_bells, debug_time)
 
     # End of meditation
-    print_file(join(DATA_PATH, "buddha3.txt"), debug_time)
+    if not args.no_print:
+        print_file(join(DATA_PATH, "buddha3.txt"), debug_time)
     tf = time()
     program_time = time() - t0
     if debug_time:
@@ -155,6 +164,8 @@ at the end of the meditation period""")
         help='show version number and quit')
     parser.add_argument('-q', '--quiet', action="store_true",
         help='run program without sound')
+    parser.add_argument('-n', '--no-print', action="store_true",
+        help='run program without printing the ascii art')
     parser.add_argument('-D', '--debug-time', action="store_true",
         help='print program and meditation time')
     args = parser.parse_args()
