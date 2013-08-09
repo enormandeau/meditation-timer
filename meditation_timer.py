@@ -47,7 +47,6 @@ def wait(duration, debug_time):
 def play_chime(volume):
     """Play a chime once
     """
-    print "Volume:", volume
     mplayer_call = "mplayer -volume {} ".format(volume) + \
         DATA_PATH + \
         "/bowl-short.ogg -really-quiet 2> /dev/null"
