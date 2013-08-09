@@ -1,3 +1,7 @@
+NEW IN VERSION 0.3.2
+
+- Installation and uninstallation through make
+
 NEW IN VERSION 0.3.1
 
 - Added version option
