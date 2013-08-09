@@ -194,6 +194,7 @@ at the end of the meditation period""")
         sys.exit(0)
 
     # Launch the program
+    # TODO replace with 'timer(args)'
     timer(
         args.period,
         args.delay,
