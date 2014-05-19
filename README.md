@@ -1,6 +1,6 @@
 ###ABOUT THIS PROGRAM
 
-Meditation timer (v0.3.2) is a simple program to assist in the practice of
+Meditation timer (v0.3.4) is a simple program to assist in the practice of
 mindfulness that works under Linux. It provides a meditation timer that plays
 chimes at the start and the end of the meditation session.
 
