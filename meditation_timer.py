@@ -9,7 +9,7 @@ use the -h option for full help and options
     unending meditation
     expression of bliss
 """
-__VERSION__ = "0.3.3"
+__VERSION__ = "0.3.4"
 
 # Importing modules
 from os.path import join, dirname
@@ -29,7 +29,7 @@ else:
     print "Read the installation procedure in the README.md file."
 
 # Defining functions
-def wait(duration, debug_time):
+def wait(duration=0, debug_time=False):
     """Wait a certain number of minutes
     """
     t0 = time()
@@ -52,7 +52,7 @@ def play_chime(volume):
         "/bowl-short.ogg -really-quiet 2> /dev/null"
     subprocess.call([mplayer_call], shell=True)
 
-def play_chimes(n, debug_time, volume):
+def play_chimes(n=1, debug_time=False, volume):
     """Play a chime n times
     """
     for i in xrange(n):
@@ -63,14 +63,16 @@ def play_chimes(n, debug_time, volume):
             print "  Chime " + str(i + 1) + ":", pretty_time(delta)
 
 def pretty_time(t):
-    """Pretty print time in minutes and seconds
+    """Format time in minutes and seconds
+
+    Format example: '2 min 23.9 sec'
     """
     tmin = int(t) / 60
     tsec = int(t - tmin * 60)
     trest = int((t - tmin * 60 - tsec) * 100)
     return "{} min {}.{} sec".format(tmin, tsec, trest)
 
-def print_file(ascii_file, debug_time):
+def print_file(ascii_file, debug_time=False):
     """Print the content of a text file, for example ascii art
     """
     if not debug_time:

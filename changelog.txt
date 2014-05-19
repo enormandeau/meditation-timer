@@ -1,3 +1,19 @@
+NEW IN VERSION 0.3.4
+
+- Code cleanup
+
+NEW IN VERSION 0.3.3
+
+- Removed print statement used to debug
+- Removed TODO
+- Added volume option
+- Added no-print option
+- Debugged meditation total duration
+- Fixed installed data directory problem
+- Fixed image
+- Option correctness assertion + removed bell duration from wait
+- Added optional interval bells, removed licence option
+
 NEW IN VERSION 0.3.2
 
 - Installation and uninstallation through make
