@@ -52,7 +52,7 @@ def play_chime(volume):
         "/bowl-short.ogg -really-quiet 2> /dev/null"
     subprocess.call([mplayer_call], shell=True)
 
-def play_chimes(n=1, debug_time=False, volume):
+def play_chimes(n=1, debug_time=False, volume=70):
     """Play a chime n times
     """
     for i in xrange(n):
