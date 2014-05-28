@@ -22,11 +22,8 @@ import os
 # Defining global variables
 if dirname(__file__) == "/usr/local/bin":
     DATA_PATH = "/usr/share/meditation-timer/data"
-elif dirname(__file__) == ".":
-    DATA_PATH = "./data"
 else:
-    print "Cannot launch Meditation-timer."
-    print "Read the installation procedure in the README.md file."
+    DATA_PATH = dirname(os.path.realpath(__file__)) + "/data"
 
 # Defining functions
 def wait(duration=0, debug_time=False):
