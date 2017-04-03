@@ -39,7 +39,7 @@ def wait(duration=0, debug_time=False):
         time_diff = time_end - time()
     if debug_time:
         delta = time() - t0
-        print " Waited:", pretty_time(delta)
+        print(" Waited: " + pretty_time(delta))
 
 def play_chime(volume):
     """Play a chime once
@@ -52,12 +52,12 @@ def play_chime(volume):
 def play_chimes(n=1, debug_time=False, volume=70):
     """Play a chime n times
     """
-    for i in xrange(n):
+    for i in range(n):
         t0 = time()
         play_chime(volume)
         if debug_time:
             delta = time() - t0
-            print "  Chime " + str(i + 1) + ":", pretty_time(delta)
+            print("  Chime " + str(i + 1) + ": " + pretty_time(delta))
 
 def pretty_time(t):
     """Format time in minutes and seconds
@@ -74,10 +74,10 @@ def print_file(ascii_file, debug_time=False):
     """
     if not debug_time:
         ascii_data = open(ascii_file)
-        print "\n" * 69
+        print("\n" * 69)
         for line in ascii_data:
-            print line.rstrip()
-        print
+            print(line.rstrip())
+        print("")
 
 def timer(period, delay, start_bells, end_bells,
         interval, interval_time, interval_bells,
@@ -102,7 +102,7 @@ def timer(period, delay, start_bells, end_bells,
         play_chimes(start_bells, debug_time, volume)
     if debug_time:
         delta = time() - t0
-        print "--Preparation:", pretty_time(delta)
+        print("--Preparation: " + pretty_time(delta))
 
     # Meditation
     if not no_print:
@@ -137,8 +137,8 @@ def timer(period, delay, start_bells, end_bells,
     tf = time()
     program_time = time() - t0
     if debug_time:
-        print "--Meditation:", pretty_time(meditation_time)
-        print "--Program:", pretty_time(program_time)
+        print("--Meditation:" + pretty_time(meditation_time))
+        print("--Program:" + pretty_time(program_time))
 
 # Main loop
 if __name__ == "__main__":
@@ -188,7 +188,7 @@ at the end of the meditation period""")
 
     # Show version or licence
     if args.version:
-        print __VERSION__
+        print(__VERSION__)
         sys.exit(0)
 
     # Launch the program
