@@ -1,25 +1,25 @@
-###ABOUT THIS PROGRAM
+### ABOUT THIS PROGRAM
 
 Meditation timer (v0.3.4) is a simple program to assist in the practice of
 mindfulness that works under Linux. It provides a meditation timer that plays
 chimes at the start and the end of the meditation session.
 
-###FEATURES
+### FEATURES
 
  - Set preparation and meditation periods duration
  - Choose the number of bells before and after the meditation period
  - Add optional bells at intervals during meditation 
 
-###DEPENDENCIES
+### DEPENDENCIES
 
 Meditation timer requires the mplayer program and currently works only under
 Linux (tested on Ubuntu 12.04+) and possibly MacOSX (not tested).
 
-###INSTALLING
+### INSTALLING
 
 In Linux, you have two options in order to use Meditation-timer:
 
-####1) No installation
+#### 1) No installation
 
 Simply put the program directory anywhere on your system. When you want to
 launch the program, open a terminal and move into the directory (using 'cd').
@@ -35,7 +35,9 @@ Launch the program:
 ./meditation_timer.py -h
 ```
 
-####2) Installing meditation-timer via the 'install.sh' script
+#### 2) Installing
+
+meditation-timer via the 'install.sh' script
 This will install the Python program file ('meditation_timer.py') in the
 '/usr/local/bin' directory and the data in '/usr/share/meditation-timer/'. In
 order to install the program, you will need to have admnistrative rights on the
@@ -52,8 +54,7 @@ The program is now installed. If there is a previous installation of meditation_
 sudo make uninstall
 ```
 
-
-###USING THE PROGRAM
+### USING THE PROGRAM
 
 - Launch the program with the -h option information about available options.
   Open a terminal and lauch the following command:
@@ -65,7 +66,7 @@ meditation_timer.py -h
 (Note: add './' before the command if the program was not installed)
 
 
-###CONTACTING THE AUTHOR
+### CONTACTING THE AUTHOR
 
 You can send comments to the author at:
 
