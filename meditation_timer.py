@@ -1,21 +1,22 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """Meditation timer
 A tool to assist in the practice of mindfulness
 
 use the -h option for full help and options
 (eg: meditation_timer.py -h)
 
-    Statue sits, quiet
+    Buddha sits, clouds pass
     unending meditation
     expression of bliss
 """
-__VERSION__ = "0.3.4"
+__VERSION__ = "0.4.0"
 
 # Importing modules
 from os.path import join, dirname
 from time import time, sleep
 import subprocess
 import argparse
+import pygame
 import sys
 import os
 
@@ -44,10 +45,7 @@ def wait(duration=0, debug_time=False):
 def play_chime(volume):
     """Play a chime once
     """
-    mplayer_call = "mplayer -volume {} ".format(volume) + \
-        DATA_PATH + \
-        "/bowl-short.ogg -really-quiet 2> /dev/null"
-    subprocess.call([mplayer_call], shell=True)
+    pygame.mixer.music.play()
 
 def play_chimes(n=1, debug_time=False, volume=70):
     """Play a chime n times
@@ -191,8 +189,15 @@ at the end of the meditation period""")
         print(__VERSION__)
         sys.exit(0)
 
-    # Launch the program
+    # Initialize sound
+    import pygame
+    pygame.mixer.init()
+    pygame.mixer.music.load(DATA_PATH + "/bowl-short.ogg")
+    pygame.mixer.music.set_volume(0.3)
+
+    # Launch meditation period
     # TODO replace with 'timer(args)'
+
     timer(
         args.period,
         args.delay,
@@ -206,4 +211,3 @@ at the end of the meditation period""")
         args.no_print,
         args.volume
         )
-

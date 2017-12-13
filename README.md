@@ -1,8 +1,10 @@
 ### ABOUT THIS PROGRAM
 
-Meditation timer (v0.3.4) is a simple program to assist in the practice of
-mindfulness that works under Linux. It provides a meditation timer that plays
-chimes at the start and the end of the meditation session.
+Meditation timer (v0.4.0) is a simple program to assist in the practice of
+mindfulness that. It provides a meditation timer that plays chimes at the start
+and the end of the meditation session.
+
+It has been tested under Linux with python3.6.
 
 ### FEATURES
 
@@ -12,8 +14,11 @@ chimes at the start and the end of the meditation session.
 
 ### DEPENDENCIES
 
-Meditation timer requires the mplayer program and currently works only under
-Linux (tested on Ubuntu 12.04+) and possibly MacOSX (not tested).
+Meditation timer depends on:
+
+- Python 3.6+
+- pygame (`pip install pygame`)
+- Linux (possibly works under MacOS)
 
 ### INSTALLING
 
@@ -23,7 +28,7 @@ In Linux, you have two options in order to use Meditation-timer:
 
 Simply put the program directory anywhere on your system. When you want to
 launch the program, open a terminal and move into the directory (using 'cd').
-Make sure the file 'meditation_timer.py' executable. In the console, type:
+Make sure the file `meditation_timer.py` executable. In the console, type:
 
 ```bash
  chmod +x meditation_timer.py
@@ -37,18 +42,20 @@ Launch the program:
 
 #### 2) Installing
 
-meditation-timer via the 'install.sh' script
-This will install the Python program file ('meditation_timer.py') in the
-'/usr/local/bin' directory and the data in '/usr/share/meditation-timer/'. In
-order to install the program, you will need to have admnistrative rights on the
-computer you are using. To proceed with the installation, launch the
-installation script (use 'sudo' to gain administrative rights):
+You can install meditation-timer via the 'install.sh' script. This will install
+the Python program file ('meditation_timer.py') in the '/usr/local/bin'
+directory and the data in '/usr/share/meditation-timer/'. In order to install
+the program, you will need to have admnistrative rights on the computer you are
+using. To proceed with the installation, launch the installation script (use
+'sudo' to gain administrative rights):
 
 ```bash
 sudo make install
 ```
 
-The program is now installed. If there is a previous installation of meditation_timer on your computer, run the following command to remove it before doing the install:
+The program is now installed. If there is a previous installation of
+`meditation_timer` on your computer, run the following command to remove it
+before doing the install:
 
 ```bash
 sudo make uninstall
