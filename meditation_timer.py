@@ -15,7 +15,6 @@ __VERSION__ = "0.4.0"
 # Importing modules
 from os.path import join, dirname
 from time import time, sleep
-import subprocess
 import argparse
 import pygame
 import sys
