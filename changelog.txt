@@ -1,5 +1,7 @@
 NEW IN VERSION 0.4.0
 
+- Format for readability
+- Stop passing arguments to timer() and use args directly
 - Requires Python 3.6+
 - Fix sound problem with pygame
 - Altered haiku sligtly, replaced:
