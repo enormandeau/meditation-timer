@@ -16,9 +16,9 @@ __VERSION__ = "0.4.0"
 from os.path import join, dirname
 from time import time, sleep
 import argparse
-import pygame
 import sys
 import os
+import subprocess
 
 # Defining global variables
 if dirname(__file__) == "/usr/local/bin":
@@ -48,12 +48,7 @@ def wait(duration=0, debug_time=False):
 def play_chime():
     """Play a chime once
     """
-    pygame.mixer.init(frequency=44100)
-    pygame.mixer.music.load(DATA_PATH + "/bowl-short.ogg")
-    pygame.mixer.music.set_volume(args.volume)
-    pygame.mixer.music.play()
-    pygame.time.wait(8450)
-    pygame.mixer.quit()
+    subprocess.run(["mpv /usr/share/meditation-timer/data/dharma107.mp3 &>/dev/null & sleep 8"], shell=True)
 
 def play_chimes(n=1, debug_time=False):
     """Play a chime n times
