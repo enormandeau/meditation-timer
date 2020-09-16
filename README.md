@@ -72,6 +72,12 @@ meditation_timer.py -h
 
 (Note: add './' before the command if the program was not installed)
 
+You can also create a bash alias with your favorite settings. For example:
+
+```bash
+# No print, 5 minutes with 1 bell every minute
+alias med='meditation_timer.py -n -p 5 -d 10 -i -I 1 >/dev/null'
+```
 
 ### CONTACTING THE AUTHOR
 
