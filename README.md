@@ -79,6 +79,18 @@ You can also create a bash alias with your favorite settings. For example:
 alias med='meditation_timer.py -n -p 5 -d 10 -i -I 1 >/dev/null'
 ```
 
+### Pomodoro
+
+If you like the pomodoro system (15 minutes of work and 5 minute breaks), you
+can use the following alias to reproduct this:
+
+```bash
+alias pomodoro='while true; do meditation_timer.py -n -p 15 -d 3 -s 1 -e 2 >/dev/null; sleep 5m; done'
+```
+
+This will start a 15 minutes working session with one bell and end it with two
+bells. The session will be followed by a 5 minute break an then loop again.
+
 ### CONTACTING THE AUTHOR
 
 You can send comments to the author at:
