@@ -2,15 +2,16 @@
 
 Meditation timer (v0.4.0) is a simple program to assist in the practice of
 mindfulness. It provides a meditation timer that plays chimes at the start
-and the end of the meditation session and optionally at regular intervals.
+and the end of the meditation session and, optionally, at regular intervals.
 
-It has been tested under Linux with python3.6.
+It has been tested under Linux with python3.6+.
 
 ### FEATURES
 
  - Set preparation and meditation periods duration
  - Choose the number of bells before and after the meditation period
  - Add optional bells at intervals during meditation 
+ - Use as a pomodoro timer! (see details in the `Pomodoro` section)
 
 ### DEPENDENCIES
 
@@ -38,6 +39,13 @@ Launch the program:
 
 ```bash
 ./meditation_timer.py -h
+```
+
+Alternatively, add the `meditation-timer` directory to your `PATH` variable,
+then launch with:
+
+```bash
+meditation_timer.py -h
 ```
 
 #### 2) Installing
@@ -82,14 +90,16 @@ alias med='meditation_timer.py -n -p 5 -d 10 -i -I 1 >/dev/null'
 ### Pomodoro
 
 If you like the pomodoro system (15 minutes of work and 5 minute breaks), you
-can use the following alias to reproduct this:
+can use the following alias, which you can save in your `~/.bashrc` or
+`~/.bash_profile` file to reproduct this:
 
 ```bash
 alias pomodoro='while true; do meditation_timer.py -n -p 15 -d 3 -s 1 -e 2 >/dev/null; sleep 5m; done'
 ```
 
-This will start a 15 minutes working session with one bell and end it with two
-bells. The session will be followed by a 5 minute break an then loop again.
+This will start a 15 minutes working session with one bell and then end it with
+two bells. The session will be followed by a 5 minute break an then loop again 
+until you stop it with `CTRL-C`.
 
 ### CONTACTING THE AUTHOR
 

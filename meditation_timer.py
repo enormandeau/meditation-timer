@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Meditation timer
-A tool to assist in the practice of mindfulness
+A command-line tool to assist in the practice of mindfulness
 
 use the -h option for full help and options
 (eg: meditation_timer.py -h)
@@ -168,22 +168,21 @@ def meditation_timer():
 if __name__ == "__main__":
     # Option parser
     parser = argparse.ArgumentParser(description=
-            """Meditation timer. Sound a bell after an initial delay and 
-at the end of the meditation period""")
+            """Meditation timer. Sound a bells at the start and end of the meditation period""")
     parser.add_argument('-p', '--period', type=float, nargs='?', default=30,
-        help= 'meditation period in minutes, default is 30')
+        help= 'meditation period duration, in minutes, default is 30')
     parser.add_argument('-d', '--delay',  type=int, nargs='?', default=30,
-        help='initial delay in seconds, default is 30')
+        help='initial delay, in seconds, default is 30')
     parser.add_argument('-s', '--start-bells', type=int, default=3,
-        help='number of times bell chimes at meditation start, default is 3')
+        help='number of bell chimes at the start of the meditation, default is 3')
     parser.add_argument('-e', '--end-bells', type=int, default=3,
-        help='number of times bell chimes at meditation end, default is 3')
+        help='number of bell chimes at the end of the meditation, default is 3')
     parser.add_argument('-i', '--interval', action="store_true",
-        help='whether bells should be played during the meditation')
+        help='whether bells should be played at interval during the meditation')
     parser.add_argument('-I', '--interval-time', type=float, default=5,
-        help='interval in minutes at which to play bells during the meditation')
+        help='interval, in minutes, at which to play bells during the meditation')
     parser.add_argument('-b', '--interval-bells', type=int, default=1,
-        help='number of bells to play at intervals, default is 1')
+        help='number of bells to play after each interval, default is 1')
     parser.add_argument('-V', '--version', action="store_true",
         help='show version number and quit')
     parser.add_argument('-v', '--volume', type=float, default=0.3,
@@ -191,9 +190,9 @@ at the end of the meditation period""")
     parser.add_argument('-q', '--quiet', action="store_true",
         help='run program without sound')
     parser.add_argument('-n', '--no-print', action="store_true",
-        help='run program without printing the ascii art')
+        help='run program without printing text or the ascii art')
     parser.add_argument('-D', '--debug-time', action="store_true",
-        help='print program and meditation time')
+        help='print debug information about program and meditation times')
     args = parser.parse_args()
 
     # Insure that option values OK
