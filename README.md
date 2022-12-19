@@ -8,9 +8,9 @@ It has been tested under Linux with python3.6+.
 
 ### FEATURES
 
- - Set preparation and meditation periods duration
- - Choose the number of bells before and after the meditation period
- - Add optional bells at intervals during meditation 
+ - Set preparation and meditation periods durations
+ - Choose number of bells to play before and after the meditation period
+ - Add optional bells at intervals during meditation
  - Use as a pomodoro timer! (see details in the `Pomodoro` section)
 
 ### DEPENDENCIES
@@ -71,7 +71,7 @@ sudo make uninstall
 
 ### USING THE PROGRAM
 
-- Launch the program with the -h option information about available options.
+- Launch the program with the -h option to list available options.
   Open a terminal and lauch the following command:
 
 ```bash
