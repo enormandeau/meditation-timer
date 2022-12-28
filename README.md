@@ -6,7 +6,7 @@ and the end of the meditation session and, optionally, at regular intervals.
 
 It has been tested under Linux with python3.6+.
 
-![Meditation Timer](https://raw.githubusercontent.com/enormandeau/meditation-timer/master/data/med.png)
+![Meditation Timer](data/med.png)
 
 ### FEATURES
 
