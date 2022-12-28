@@ -1,8 +1,9 @@
 ### ABOUT THIS PROGRAM
 
 Meditation timer (v0.4.0) is a simple program to assist in the practice of
-mindfulness. The terminal interface provides a meditation timer that plays chimes at the start
-and the end of the meditation session and, optionally, at regular intervals.
+mindfulness. The ascii terminal interface provides a meditation timer that
+plays chimes at the start and the end of the meditation session and, optionally,
+at regular intervals.
 
 It has been tested under Linux with python3.6+.
 
