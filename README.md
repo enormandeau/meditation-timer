@@ -93,7 +93,7 @@ alias med='meditation_timer.py -n -p 5 -d 10 -i -I 1 >/dev/null'
 ### Pomodoro
 
 If you like the pomodoro system (15 minutes of work and 5 minute breaks), you
-can use the following alias to reproduct this:
+can use the following alias:
 
 ```bash
 alias pomodoro='while true; do meditation_timer.py -n -p 15 -d 3 -s 1 -e 2 >/dev/null; sleep 5m; done'
