@@ -11,7 +11,7 @@ It has been tested under Linux with python3.6+.
 
 ### FEATURES
 
- - Set duration or preparation and meditation periods
+ - Set duration of preparation and meditation periods
  - Choose number of bells to play before and after the meditation period
  - Add optional bells at intervals during meditation
  - Use as a pomodoro timer! (see details in the `Pomodoro` section)
