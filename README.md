@@ -11,7 +11,7 @@ It has been tested under Linux with python3.6+.
 
 ### FEATURES
 
- - Set preparation and meditation periods durations
+ - Set duration or preparation and meditation periods
  - Choose number of bells to play before and after the meditation period
  - Add optional bells at intervals during meditation
  - Use as a pomodoro timer! (see details in the `Pomodoro` section)
@@ -26,7 +26,7 @@ Meditation timer depends on:
 
 ### INSTALLING
 
-In Linux, you have two options in order to use Meditation-timer:
+In Linux, you have two options to use Meditation-timer:
 
 #### 1) No installation
 
@@ -81,7 +81,7 @@ sudo make uninstall
 meditation_timer.py -h
 ```
 
-(Note: add './' before the command if the program was not installed)
+(Note: add './' before the command if the program was not installed or in your `PATH` variable)
 
 You can also create a bash alias with your favorite settings. For example:
 
